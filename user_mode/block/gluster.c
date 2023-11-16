@@ -1030,7 +1030,7 @@ static int qemu_gluster_create(const char *filename,
 #endif /* CONFIG_GLUSTERFS_FALLOCATE */
 #ifdef CONFIG_GLUSTERFS_ZEROFILL
     case PREALLOC_MODE_FULL:
-        if (!glfs_ftruncate(fd, total_size)) {
+        if (!glfs_ftruncate(fd, total_size, NULL, NULL)) {
             if (glfs_zerofill(fd, 0, total_size)) {
                 error_setg(errp, "Could not zerofill the new file");
                 ret = -errno;
@@ -1042,7 +1042,7 @@ static int qemu_gluster_create(const char *filename,
         break;
 #endif /* CONFIG_GLUSTERFS_ZEROFILL */
     case PREALLOC_MODE_OFF:
-        if (glfs_ftruncate(fd, total_size) != 0) {
+        if (glfs_ftruncate(fd, total_size, NULL, NULL) != 0) {
             ret = -errno;
             error_setg(errp, "Could not resize file");
         }
@@ -1106,7 +1106,7 @@ static int qemu_gluster_truncate(BlockDriverState *bs, int64_t offset,
         return -ENOTSUP;
     }
 
-    ret = glfs_ftruncate(s->fd, offset);
+    ret = glfs_ftruncate(s->fd, offset, NULL, NULL);
     if (ret < 0) {
         ret = -errno;
         error_setg_errno(errp, -ret, "Failed to truncate file");
