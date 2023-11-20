@@ -25,6 +25,7 @@
    have a look at afl-showmap.c.
 
  */
+#include "exec/user/abitypes.h"
 #include "zyw_config.h"
 
 int run_time = 0;
