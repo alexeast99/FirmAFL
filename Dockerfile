@@ -8,7 +8,7 @@ RUN useradd -m -s /bin/bash -G sudo --home /home/alexeast alexeast
 
 RUN apt update
 RUN apt upgrade -y
-RUN apt install -y tzdata git build-essential make vim qemu python2 libssl-dev libffi-dev python3-dev pkg-config sudo libglib2.0-dev
+RUN apt install -y tzdata git build-essential make vim qemu python2 libssl-dev libffi-dev python3-dev pkg-config sudo libglib2.0-dev flex bison
 
 USER alexeast
 WORKDIR /home/alexeast/workspace
