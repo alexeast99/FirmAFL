@@ -15,6 +15,9 @@ RUN apt install -y tzdata git build-essential make vim qemu python2 libssl-dev \
 USER alexeast
 WORKDIR /home/alexeast/workspace
 RUN git clone https://github.com/alexeast99/FirmAFL
+RUN git -C /home/alexeast/workspace/FirmAFL checkout dev
+RUN git -C /home/alexeast/workspace/FirmAFL submodule update --init
+
 WORKDIR /home/alexeast
 
 # WORKDIR /home/alexeast/workspace/FirmAFL/user_mode
