@@ -224,7 +224,8 @@ sleuthkit: $(SLEUTHKIT_SHARED_LIB)
 
 $(SLEUTHKIT_SHARED_LIB):
 	@echo "Building Sleuthkit, please wait..."
-	$(call quiet-command,$(MAKE) -j32 -C ./shared/sleuthkit > /dev/null 2>&1,"  GEN   Sleuthkit")
+# $(call quiet-command,$(MAKE) -j32 -C ./shared/sleuthkit > /dev/null 2>&1,"  GEN   Sleuthkit")
+	$(call quiet-command,$(MAKE) -j32 -C ./shared/sleuthkit,"  GEN   Sleuthkit")
 	$(call quiet-command,$(MAKE) -C ./shared/sleuthkit install > /dev/null 2>&1,"  PREP  Sleuthkit headers/libs")
 
 SUBDIR_MAKEFLAGS=$(if $(V),,--no-print-directory) BUILD_DIR=$(BUILD_DIR)
